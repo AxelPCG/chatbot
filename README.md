@@ -1,0 +1,1 @@
+Coletânea de códigos utilizando a API da OpenAi para a criação de um chatbor personalizado.
