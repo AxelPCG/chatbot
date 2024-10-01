@@ -1,7 +1,7 @@
-python -m venv chatbot
+python -m venv
 
 cd chatbot
-curso_1_openai\Scripts\activate
+.venv\Scripts\activate
 
 pip install numpy openai python-dotenv tiktoken flask opencv-python uuid
 
