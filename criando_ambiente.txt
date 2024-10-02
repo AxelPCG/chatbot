@@ -1,9 +1,0 @@
-python -m venv
-
-cd chatbot
-.venv\Scripts\activate
-
-pip install numpy openai python-dotenv tiktoken flask opencv-python uuid
-
-
-git remote add origin https://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@github.com/AxelPCG/chatbot.git
