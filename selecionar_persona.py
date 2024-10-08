@@ -6,7 +6,7 @@ from time import sleep
 load_dotenv()
 
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-modelo = "gpt-4o"
+modelo = "gpt-4"
 
 personas = {
     'positivo': """
