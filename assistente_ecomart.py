@@ -8,7 +8,7 @@ from selecionar_persona import *
 load_dotenv()
 
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-modelo = "gpt-4"
+modelo = "gpt-4o"
 contexto = carrega("dados/ecomart.txt")
 
 def criar_thread():

@@ -7,7 +7,7 @@ from helpers import *
 load_dotenv()
 
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-modelo = "gpt-4"
+modelo = "gpt-4o"
 
 politicas_ecomart = carrega('dados/políticas_ecomart.txt')
 dados_ecomart = carrega('dados/dados_ecomart.txt')
