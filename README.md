@@ -1,5 +1,5 @@
 
-## Coletânea de códigos utilizando a API da OpenAi para a criação de um chatbot personalizado.
+## Coletânea de códigos utilizando a API da OpenAi para a criação de um chatbot personalizado
 
 ## ⚙️ Configuração do Ambiente
 
