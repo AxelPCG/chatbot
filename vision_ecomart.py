@@ -7,7 +7,7 @@ from helpers import encodar_imagem
 load_dotenv()
 
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-modelo = "gpt-4-vision-preview"
+modelo = "gpt-4o"
 
 def analisar_imagem(caminho_imagem):
     prompt = """"

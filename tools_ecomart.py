@@ -10,7 +10,7 @@ from selecionar_persona import *
 load_dotenv()
 
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-modelo = "gpt-4-1106-preview"
+modelo = "gpt-4o"
 
 minhas_tools = [
     {"type": "retrieval"},
