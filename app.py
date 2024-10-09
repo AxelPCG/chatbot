@@ -17,7 +17,7 @@ cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 modelo = "gpt-4o"
 
 app = Flask(__name__)
-app.secret_key = 'alura'
+app.secret_key = os.getenv("APP_SECRET_KEY")
 
 assistente = get_json()
 thread_id = assistente["thread_id"]
