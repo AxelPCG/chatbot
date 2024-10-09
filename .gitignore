@@ -15,3 +15,4 @@ instance/
 *.venv/
 criando_ambiente.txt
 *criando_ambiente.txt
+assistentes.json

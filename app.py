@@ -7,6 +7,7 @@ from helpers import *
 from selecionar_persona import *
 from selecionar_documento import *
 from assistente_ecomart import *
+from assistent import *
 from vision_ecomart import analisar_imagem
 import uuid 
 
@@ -18,10 +19,10 @@ modelo = "gpt-4o"
 app = Flask(__name__)
 app.secret_key = 'alura'
 
-assistente = pegar_json()
+assistente = get_json()
 thread_id = assistente["thread_id"]
 assistente_id = assistente["assistant_id"]
-file_ids = assistente["file_ids"]
+vector_store_id = assistente['vector_store_id']
 
 STATUS_COMPLETED = "completed" 
 STATUS_REQUIRES_ACTION = "requires_action" 
@@ -47,8 +48,7 @@ def bot(prompt):
 
                 # Persona
                 {personalidade}
-                """,
-                file_ids=file_ids
+                """
             )
 
             resposta_vision = ""
@@ -61,8 +61,7 @@ def bot(prompt):
             cliente.beta.threads.messages.create(
                 thread_id=thread_id, 
                 role = "user",
-                content =  resposta_vision+prompt,
-                file_ids=file_ids
+                content =  resposta_vision + '\n' + prompt,
             )
 
             run = cliente.beta.threads.runs.create(
@@ -77,7 +76,7 @@ def bot(prompt):
             )
                 
                 if run.status == STATUS_REQUIRES_ACTION:
-                    tools_acionadas =       run.required_action.submit_tool_outputs.tool_calls
+                    tools_acionadas = run.required_action.submit_tool_outputs.tool_calls
                     respostas_tools_acionadas = [] 
                     for uma_tool in tools_acionadas:
                         nome_funcao = uma_tool.function.name
@@ -128,7 +127,13 @@ def upload_imagem():
 def chat():
     prompt = request.json["msg"]
     resposta = bot(prompt)
-    texto_resposta = resposta.content[0].text.value
+    
+    # Verifique se resposta é uma string ou um objeto com o atributo content
+    if isinstance(resposta, str):
+        texto_resposta = resposta
+    else:
+        texto_resposta = resposta.content[0].text.value
+    
     return texto_resposta
 
 @app.route("/")

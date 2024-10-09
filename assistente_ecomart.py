@@ -76,7 +76,10 @@ def criar_assistente(file_ids=[]):
                 """,
         model = modelo,
         tools= minhas_tools,
-        file_ids = file_ids
+        tool_resources={
+            "code_interpreter": {
+                "file_ids": file_ids
+            }
+        }
     )
     return assistente
-

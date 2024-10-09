@@ -13,7 +13,7 @@ cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 modelo = "gpt-4o"
 
 minhas_tools = [
-    {"type": "retrieval"},
+    {"type": "file_search"},
     {
       "type": "function",
             "function": {
